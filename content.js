@@ -31,7 +31,12 @@
 
   api.storage.onChanged.addListener((changes, area) => {
     if (area !== "local") return;
-    if (!STORAGE_KEYS.some((key) => Object.prototype.hasOwnProperty.call(changes, key))) return;
+    if (
+      !STORAGE_KEYS.some((key) =>
+        Object.prototype.hasOwnProperty.call(changes, key),
+      )
+    )
+      return;
     load();
   });
 

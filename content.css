@@ -14,22 +14,35 @@
      state, so reveal animates but hiding does not.
    - `filter: none` (not `blur(0)`) drops the filter entirely when revealed. */
 
-#pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])) {
+#pane-side
+  div[role="row"][data-testid^="list-item-"]:has(
+    [data-testid="cell-frame-container"]
+  ):not(:has([data-testid^="message-"])) {
   filter: blur(var(--whc-blur, 6px)) !important;
 }
 
-#pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])):hover {
+#pane-side
+  div[role="row"][data-testid^="list-item-"]:has(
+    [data-testid="cell-frame-container"]
+  ):not(:has([data-testid^="message-"])):hover {
   filter: none !important;
   transition: filter 120ms ease;
 }
 
 /* Disabled (set on <html> by content.js) */
-html.whc-disabled #pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])) {
+html.whc-disabled
+  #pane-side
+  div[role="row"][data-testid^="list-item-"]:has(
+    [data-testid="cell-frame-container"]
+  ):not(:has([data-testid^="message-"])) {
   filter: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])):hover {
+  #pane-side
+    div[role="row"][data-testid^="list-item-"]:has(
+      [data-testid="cell-frame-container"]
+    ):not(:has([data-testid^="message-"])):hover {
     transition: none;
   }
 }
