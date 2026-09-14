@@ -2,7 +2,7 @@
 <h2 align="center">Blur your WhatsApp Web contacts for privacy — hover to reveal.</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="./popup.png" />
+    <img alt="screenshot" src="https://github.com/user-attachments/assets/949d86e0-6462-496b-ae45-3ce7845065aa" />
 </p>
 
 > [!NOTE]
