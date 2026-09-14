@@ -1,0 +1,35 @@
+/* WhatsApp Contacts Blur
+   Blurs each chat-list card (avatar, name, last message) and reveals it on
+   hover. Pure CSS with no DOM mutation, so WhatsApp's own rendering, logic and
+   event handling are never disturbed.
+
+   Only contacts/chats are blurred: a row must contain a
+   `data-testid="cell-frame-container"` cell AND contain no `message-*` cell,
+   so message search results (`message-yourself-row` / `message-row`) are never
+   blurred.
+
+   Performance notes:
+   - No `will-change`, so the browser never keeps permanent GPU layers alive.
+   - Re-blur (mouse-out) is instant: `transition` lives only on the `:hover`
+     state, so reveal animates but hiding does not.
+   - `filter: none` (not `blur(0)`) drops the filter entirely when revealed. */
+
+#pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])) {
+  filter: blur(var(--whc-blur, 6px)) !important;
+}
+
+#pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])):hover {
+  filter: none !important;
+  transition: filter 120ms ease;
+}
+
+/* Disabled (set on <html> by content.js) */
+html.whc-disabled #pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])) {
+  filter: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pane-side div[role="row"][data-testid^="list-item-"]:has([data-testid="cell-frame-container"]):not(:has([data-testid^="message-"])):hover {
+    transition: none;
+  }
+}

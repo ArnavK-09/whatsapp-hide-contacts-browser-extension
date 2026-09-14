@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WhatsApp Contacts Blur</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <span class="logo" aria-hidden="true"></span>
+      <h1>Contacts Blur</h1>
+    </header>
+
+    <main>
+      <label class="row">
+        <span class="row-label">Blur contacts</span>
+        <span class="switch">
+          <input type="checkbox" id="enabled" />
+          <span class="track" aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <div class="row slider">
+        <div class="slider-head">
+          <label for="blur">Blur intensity</label>
+          <output id="blurValue" for="blur">6px</output>
+        </div>
+        <input type="range" id="blur" min="0" max="24" step="1" />
+      </div>
+
+      <p class="hint">Contacts stay blurred in the list and reveal when you hover over them.</p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
